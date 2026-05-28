@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CineMatch - Encontrá la película perfecta para vos en menos de un minuto. Deja de scrollear por horas y empezá a disfrutar.">
+  <title>CineMatch - Encontrá qué ver en menos de un minuto</title>
+  <link rel="shortcut icon" href="src/isotipo.svg" type="image/x-icon">
+  <!-- Link root styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar" id="main-navbar">
+      <a href="#" class="logo" id="logo-brand"><img src="src/logotipo.svg" alt=""></a>
+      <ul class="nav-menu" id="navigation-menu">
+        <li><a href="#" class="nav-link active" id="nav-discover">Home</a></li>
+        <li><a href="pages/watchlist.html" class="nav-link" id="nav-watchlist">Watchlist</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Hero -->
+  <main class="main-content" id="landing-hero-container">
+
+
+    <!-- Badge flotante -->
+    <div class="floating-card card-star" id="float-star" aria-hidden="true">
+      <span>★</span>
+    </div>
+
+    <div class="floating-card card-new" id="float-new" aria-hidden="true">
+      <span>NEW</span>
+    </div>
+
+    <div class="floating-card card-play" id="float-play" aria-hidden="true">
+      <!-- Custom White Bold Play SVG Triangle -->
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5.14v14L19 12 8 5.14z" />
+      </svg>
+    </div>
+
+    <div class="floating-card card-film" id="float-film" aria-hidden="true">
+      <!-- Custom Blue Filmstrip SVG -->
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <path d="M9 3v18" />
+        <path d="M15 3v18" />
+        <path d="M3 9h18" />
+        <path d="M3 15h18" />
+      </svg>
+    </div>
+
+    <!-- Central Hero content -->
+    <section class="hero" id="hero-section">
+
+      <!-- Badge -->
+      <div class="badge-yellow" id="badge-movie-picker">MOVIE PICKER APP</div>
+
+      <!-- Main Title -->
+      <div class="hero-title-container">
+        <h1 class="hero-title" id="main-heading">ENCONTRÁ QUÉ VER EN</h1>
+        <div class="hero-highlight-box" id="highlight-wrapper">
+          <span class="hero-highlight-text" id="highlight-text">MENOS DE UN MINUTO</span>
+        </div>
+      </div>
+
+      <!-- Description Card Container with horizontal background lines -->
+      <div class="description-section" id="description-container">
+        <div class="decor-line" id="line-decoration"></div>
+        <article class="description-card" id="description-body">
+          Dejá de scrollear por horas. CineMatch cruza tus gustos y elige la película perfecta para vos esta noche. Sin
+          vueltas.
+        </article>
+      </div>
+
+      <!-- button start -->
+      <a href="./pages/movies.html" class="btn-empezar" id="btn-start-action">
+        <span>EMPEZAR</span>
+      </a>
+
+
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="main-footer">
+    <a href="#" class="footer-logo" id="footer-brand">CineMatch</a>
+    <p class="copyright" id="footer-copyright"></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

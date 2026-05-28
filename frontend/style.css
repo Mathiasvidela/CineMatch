@@ -1,0 +1,1230 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+/* CineMatch Neo-Brutalist CSS Styling System */
+
+:root {
+    --bg-color: #FAF8EE;
+    --primary-blue: #0047FF;
+    --accent-yellow: #FFDE4D;
+    --accent-pink: #E60067;
+    --accent-lavender: #E4E5FA;
+    --black: #000000;
+    --charcoal: #1A1A1A;
+    --border-width: 3px;
+
+    --neo-shadow-large: 6px 6px 0px #000000;
+    --neo-shadow-medium: 4px 4px 0px #000000;
+    --neo-shadow-small: 2px 2px 0px #000000;
+}
+
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: var(--bg-color);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--charcoal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation Navbar */
+.navbar {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    background-color: #FFFFFF;
+    border-bottom: var(--border-width) solid var(--black);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 1.05rem;
+    position: relative;
+    transition: color 0.15s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.nav-link.active {
+    color: var(--black);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+}
+
+/* Main Content Wrappers */
+.main-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* Hero Section */
+.hero {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 6.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Yellow Top Badge */
+.badge-yellow {
+    background-color: var(--accent-yellow);
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-medium);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    transform: rotate(-2deg);
+    margin-bottom: 2.2rem;
+    border-radius: 4px;
+}
+
+/* Title Styling */
+.hero-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+/* Highlighted Blue Box */
+.hero-highlight-box {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    padding: 0.6rem 2.2rem;
+    transform: rotate(-1.5deg);
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.hero-highlight-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 4.2rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+/* Description Card with Stripe */
+.description-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 3.2rem 0;
+    padding: 0.8rem 0;
+}
+
+.description-card {
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    padding: 1.6rem 2.2rem;
+    max-width: 650px;
+    width: calc(100% - 2rem);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    font-weight: 500;
+    text-align: center;
+    color: #2F2F2F;
+    z-index: 2;
+    box-shadow: var(--neo-shadow-medium);
+    border-radius: 4px;
+}
+
+/* Empezar Button */
+.btn-empezar {
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.85rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    padding: 1.1rem 3.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    position: relative;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    user-select: none;
+}
+
+.btn-empezar svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-empezar:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px #000000;
+}
+
+.btn-empezar:hover svg {
+    transform: translateX(5px);
+}
+
+.btn-empezar:active {
+    transform: translate(5px, 5px);
+    box-shadow: 1px 1px 0px #000000;
+}
+
+/* Floating Card Graphics (Hero Decorations) */
+.floating-card {
+    position: absolute;
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-medium);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    user-select: none;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+}
+
+.floating-card:hover {
+    box-shadow: 8px 8px 0px #000000;
+}
+
+/* Star Card - Top Left */
+.card-star {
+    background-color: var(--accent-yellow);
+    width: 72px;
+    height: 82px;
+    top: 80px;
+    left: 5%;
+    transform: rotate(-12deg);
+    font-size: 1.8rem;
+}
+
+.card-star:hover {
+    transform: scale(1.1) rotate(-6deg);
+}
+
+/* NEW Card - Mid Right */
+.card-new {
+    background-color: var(--accent-lavender);
+    padding: 0.45rem 1.4rem;
+    top: 175px;
+    right: 5%;
+    transform: rotate(8deg);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+}
+
+.card-new:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* Play Button Card - Mid-Low Right */
+.card-play {
+    background-color: var(--accent-pink);
+    width: 82px;
+    height: 100px;
+    bottom: 120px;
+    right: 10%;
+    transform: rotate(14deg);
+    color: #FFFFFF;
+}
+
+.card-play:hover {
+    transform: scale(1.1) rotate(6deg);
+}
+
+/* Film Card - Low Left */
+.card-film {
+    background-color: #FFFFFF;
+    width: 65px;
+    height: 75px;
+    bottom: 100px;
+    left: 6%;
+    transform: rotate(-10deg);
+    color: var(--primary-blue);
+}
+
+.card-film:hover {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+/* Footer Section */
+.footer {
+    background-color: var(--charcoal);
+    color: #FFFFFF;
+    border-top: var(--border-width) solid var(--black);
+    padding: 2.8rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.footer-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.footer-link {
+    color: #B3B3B3;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: color 0.15s ease;
+    text-transform: capitalize;
+}
+
+.footer-link:hover {
+    color: var(--accent-yellow);
+}
+
+.copyright {
+    color: #8C8C8C;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+    .card-star {
+        left: 2%;
+        top: 120px;
+    }
+
+    .card-new {
+        right: 2%;
+        top: 220px;
+    }
+
+    .card-play {
+        right: 4%;
+    }
+
+    .card-film {
+        left: 3%;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .floating-card {
+        display: none !important;
+    }
+
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .footer {
+        padding: 2.5rem 2rem;
+        flex-direction: column;
+        gap: 1.8rem;
+        text-align: center;
+    }
+
+    .footer-menu {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-title,
+    .hero-highlight-text {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        gap: 1.5rem;
+    }
+
+    .hero {
+        padding: 3rem 1rem 4rem 1rem;
+    }
+
+    .hero-title,
+    .hero-highlight-text {
+        font-size: 2rem;
+    }
+
+    .hero-highlight-box {
+        padding: 0.4rem 1.2rem;
+    }
+
+    .badge-yellow {
+        margin-bottom: 1.5rem;
+    }
+
+    .description-card {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .description-section {
+        margin: 1.5rem 0 2.5rem 0;
+    }
+
+    .btn-empezar {
+        font-size: 1.4rem;
+        padding: 0.9rem 2.2rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 3rem;
+    }
+
+    .stat-badge {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Watchlist en construccion
+   ========================================================================== */
+.watchlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    position: relative;
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.construction-card {
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    padding: 3rem 2.5rem;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    width: 100%;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+/* Caution striped header inside card */
+.caution-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: repeating-linear-gradient(-45deg,
+            var(--accent-yellow),
+            var(--accent-yellow) 15px,
+            var(--black) 15px,
+            var(--black) 30px);
+    border-bottom: var(--border-width) solid var(--black);
+}
+
+.construction-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.construction-badge {
+    background-color: var(--accent-pink);
+    color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-small);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transform: rotate(1deg);
+    display: inline-block;
+}
+
+.construction-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    color: var(--black);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+.construction-desc {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #2F2F2F;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.construction-desc strong {
+    color: var(--primary-blue);
+}
+
+
+
+/* Return Button */
+.btn-volver {
+    background-color: var(--accent-yellow);
+    color: var(--black);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-medium);
+    padding: 0.9rem 2.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    margin-top: 1rem;
+    user-select: none;
+}
+
+.btn-volver svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-volver:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px #000000;
+}
+
+.btn-volver:hover svg {
+    transform: translateX(-5px);
+}
+
+.btn-volver:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0px #000000;
+}
+
+/* Decorative floating elements for the background */
+.floating-decor {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.decor-popcorn {
+    top: 20%;
+    left: 90%;
+    transform: rotate(-15deg);
+}
+
+.decor-tape {
+    bottom: 15%;
+    right: 8%;
+    transform: rotate(20deg);
+}
+
+@media (max-width: 992px) {
+    .floating-decor {
+        display: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .construction-card {
+        padding: 2rem 1.2rem;
+    }
+
+    .construction-title {
+        font-size: 2rem;
+    }
+
+    .btn-volver {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   seccion movies preguntas y fetch
+   ========================================================================== */
+.pasos {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    max-width: 680px;
+    width: calc(100% - 2rem);
+    margin: 0 auto 4rem auto;
+    padding: 0;
+}
+
+.btn {
+    border: 4px solid #111;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 5px 5px 0 #111;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #111;
+}
+
+.btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 1px 1px 0 #111;
+}
+
+.btn-back {
+    background-color: var(--accent-yellow);
+    color: var(--black);
+}
+
+.btn-next {
+    background-color: var(--accent-pink);
+    color: var(--bg-color);
+}
+
+@media (max-width: 600px) {
+    .step-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Movie Search Wizard Card Elements
+   ========================================================================== */
+#step-container {
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    padding: 3rem 2.5rem;
+    border-radius: 8px;
+    max-width: 680px;
+    width: calc(100% - 2rem);
+    margin: 2rem auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    box-sizing: border-box;
+}
+
+.step-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.step-header .step-badge {
+    align-self: flex-start;
+    background-color: var(--accent-lavender);
+    border: 2px solid var(--black);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    box-shadow: var(--neo-shadow-small);
+    color: var(--black);
+}
+
+.progress {
+    height: 12px;
+    width: 100%;
+    background-color: var(--accent-lavender);
+    border: 2px solid var(--black);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--neo-shadow-small);
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-blue);
+    border-right: 2px solid var(--black);
+    transition: width 0.3s ease;
+}
+
+#step-container h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--black);
+    line-height: 1.15;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: left;
+}
+
+.step-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #555555;
+    margin-top: -0.8rem;
+    text-align: left;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.option-card {
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-small);
+    padding: 1.1rem 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    color: var(--black);
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    user-select: none;
+}
+
+.option-card small {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #666666;
+}
+
+.option-card:hover {
+    background-color: var(--accent-lavender);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.option-card.selected {
+    background-color: var(--accent-yellow);
+    box-shadow: 1px 1px 0px #000000;
+    transform: translate(2px, 2px);
+}
+
+.option-card.selected:nth-child(even) {
+    background-color: var(--accent-pink);
+    color: #FFFFFF;
+}
+
+.option-card.selected:nth-child(even) small {
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+/* Step 2 Sliders styling */
+.year-values {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--accent-lavender);
+    border: var(--border-width) solid var(--black);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: var(--neo-shadow-small);
+    box-sizing: border-box;
+}
+
+.year-values strong {
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
+
+.slider-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.slider-box label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    background: #FFFFFF;
+    border: 3px solid var(--black);
+    border-radius: 6px;
+    outline: none;
+    box-shadow: var(--neo-shadow-small);
+    box-sizing: border-box;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--accent-pink);
+    border: 3px solid var(--black);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000000;
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    background: var(--accent-yellow);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: var(--accent-pink);
+    border: 3px solid var(--black);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000000;
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    background: var(--accent-yellow);
+}
+
+/* Step 5 Summary styling */
+.summary-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--accent-lavender);
+    border: var(--border-width) solid var(--black);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--neo-shadow-medium);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #000000;
+    padding-bottom: 0.8rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.summary-item span {
+    font-weight: 700;
+    color: var(--black);
+}
+
+.summary-item strong {
+    color: var(--primary-blue);
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+}
+
+/* Internal action buttons and layout integration */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.primary-button, .secondary-button {
+    border: 4px solid var(--black);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: var(--neo-shadow-medium);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    user-select: none;
+}
+
+.primary-button {
+    background-color: var(--accent-pink);
+    color: #FFFFFF;
+}
+
+.primary-button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px #000000;
+}
+
+.primary-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0px #000000;
+}
+
+.secondary-button {
+    background-color: var(--accent-yellow);
+    color: var(--black);
+}
+
+.secondary-button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px #000000;
+}
+
+.secondary-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0px #000000;
+}
+
+/* Hide duplicate internal navigation buttons on steps 1-4, keep for step 5 */
+#step-container:not(:has(.summary-box)) .actions {
+    display: none !important;
+}
+
+/* Visual warnings and animations */
+.warning-shake {
+    animation: shake 0.4s ease;
+    border-color: var(--accent-pink) !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+@media (max-width: 600px) {
+    #step-container {
+        padding: 2rem 1.2rem;
+    }
+    
+    #step-container h2 {
+        font-size: 1.6rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .year-values {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
+/* ==========================================================================
+   Estilos de Mockup de Película Unitaria (CineMatch)
+   ========================================================================== */
+.movie-match-card {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    background-color: #FFFFFF;
+    border: var(--border-width) solid var(--black);
+    padding: 1.8rem;
+    border-radius: 8px;
+    box-shadow: var(--neo-shadow-medium);
+    text-align: left;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.movie-poster-box {
+    flex-shrink: 0;
+    width: 180px;
+    height: 270px;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-small);
+    border-radius: 6px;
+    background-color: var(--accent-lavender);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.movie-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-poster-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.movie-details-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+.movie-genres-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.genre-badge {
+    background-color: var(--accent-lavender);
+    border: 2px solid var(--black);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.movie-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 2rem !important;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--black);
+}
+
+.movie-meta-info {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #444444;
+    align-items: center;
+}
+
+.rating-badge {
+    background-color: var(--accent-yellow);
+    border: 2px solid var(--black);
+    padding: 0.15rem 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    border-radius: 4px;
+    color: var(--black);
+}
+
+.movie-overview {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333333;
+    margin: 0;
+}
+
+/* Permitir mostrar el bloque de botones de acción en el paso final */
+#step-container:has(.movie-match-card) .actions {
+    display: flex !important;
+}
+
+@media (max-width: 600px) {
+    .movie-match-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.2rem;
+        align-items: stretch;
+    }
+    
+    .movie-poster-box {
+        align-self: center;
+        width: 150px;
+        height: 225px;
+    }
+    
+    .movie-title {
+        font-size: 1.6rem !important;
+        text-align: center;
+    }
+    
+    .movie-meta-info {
+        justify-content: center;
+    }
+    
+    .movie-genres-badges {
+        justify-content: center;
+    }
+}
