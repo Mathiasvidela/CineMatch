@@ -240,9 +240,33 @@ const peliculasMock = [
     }
 ];
 
+//fetch pelicula TMDB
+
+// spinner de cargando
+function renderLoading() {
+    stepContainer.innerHTML = `
+    <div class="loading-card">
+      <h2>Buscando recomendaciones...</h2>
+      <p>Estamos cruzando tus gustos con la base de películas.</p>
+    </div>
+  `;
+}
+
+// seccion de error
+function renderError() {
+    stepContainer.innerHTML = `
+    <div class="error-card">
+      <h2>Ups, algo salió mal</h2>
+      <p>No pudimos cargar las películas. Probá de nuevo.</p>
+      <button class="btn btn-next" onclick="loadMovies()">Reintentar</button>
+      <button class="btn btn-back" onclick="restartSteps()">Volver al inicio</button>
+    </div>
+  `;
+}
+
 let indicePeliculaActual = 0;
 
-// Paso 5 - Resumen y recomendación de una sola película (Mockup)
+// Paso 5 - renderizar peliculas (Mockup)
 function renderSummaryStep() {
     const pelicula = peliculasMock[indicePeliculaActual];
 
@@ -295,7 +319,7 @@ function renderSummaryStep() {
   `;
 }
 
-// Función del mockup para pasar a la siguiente película de la base de datos simulada
+// Función para pasar a la siguiente película de la base de datos simulada
 window.mostrarSiguientePelicula = function () {
     indicePeliculaActual = (indicePeliculaActual + 1) % peliculasMock.length;
     console.log("Cambiando a la película index " + indicePeliculaActual + ": " + peliculasMock[indicePeliculaActual].titulo);
@@ -433,3 +457,4 @@ function setupStepListeners() {
         });
     }
 }
+

@@ -4,7 +4,7 @@ import com.cinematch.backend.service.TmdbService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/movies")
+@RequestMapping("/api/movies")
 public class MovieController {
     private final TmdbService tmdbService;
 
