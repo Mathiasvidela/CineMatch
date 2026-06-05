@@ -204,14 +204,13 @@ Primero, crear un archivo `.env` en la raíz del proyecto tomando como referenci
 ```bash
 cp .env.example .env
 ```
+<small>Este comando crea una copia del archivo .env.example y la nombra como .env</small>
 
 Luego editar el archivo `.env` y agregar la API key:
 
 ```env
 TMDB_API_KEY=tu_api_key_de_tmdb
 ```
-
-El archivo `.env` no debe subirse al repositorio.
 
 ---
 
