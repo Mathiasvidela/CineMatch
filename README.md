@@ -111,7 +111,7 @@ El usuario puede elegir hasta 3 géneros.
 ### 2. Años
 
 El usuario selecciona un rango de años.
-<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/38a1fe97-9d76-4d63-ad83-7224f37ef69d" />
+<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/4bbd8e26-da92-4331-b615-18d7e7579406" />
 
 ### 3. Duración
 
