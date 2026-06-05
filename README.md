@@ -174,7 +174,7 @@ Primero, crear un archivo `.env` en la raíz del proyecto tomando como referenci
 ```bash
 cp .env.example .env
 ```
-<small>Este comando crea una copia del archivo .env.example y la nombra como .env</small>
+*Este comando crea una copia del archivo .env.example y la nombra como .env*
 
 Luego editar el archivo `.env` y agregar la API key:
 
