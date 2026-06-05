@@ -106,52 +106,22 @@ La aplicación utiliza 4 pasos principales:
 ### 1. Géneros
 
 El usuario puede elegir hasta 3 géneros.
-
-Ejemplo:
-
-```txt
-Acción
-Comedia
-Terror
-Drama
-Ciencia ficción
-Romance
-Suspenso
-Animación
-```
+<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/3770bc58-7d69-4727-8d2d-e174f4d98dad" />
 
 ### 2. Años
 
 El usuario selecciona un rango de años.
-
-Ejemplo:
-
-```txt
-Desde: 2000
-Hasta: 2026
-```
+<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/76b4fd4a-f5a6-4bf5-9802-edbfdd932c2a" />
 
 ### 3. Duración
 
 El usuario elige la duración preferida:
-
-```txt
-Corta
-Normal
-Larga
-Me da igual
-```
+<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/2ab6c86b-d188-4559-99f1-5e70a6a496bc" />
 
 ### 4. Tipo de recomendación
 
 El usuario elige cómo ordenar los resultados:
-
-```txt
-Popular
-Mejor valorada
-Reciente
-Joyita oculta
-```
+<img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/0b1a2a02-0428-4eb9-bf4b-cd6193d85ba9" />
 
 ---
 
