@@ -1,4 +1,13 @@
 # CineMatch
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-green?style=for-the-badge&logo=springboot)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript)
+![HTML5](https://img.shields.io/badge/HTML5-orange?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-blue?style=for-the-badge&logo=css3)
+![Docker](https://img.shields.io/badge/Docker-Compose-blue?style=for-the-badge&logo=docker)
+![TMDB](https://img.shields.io/badge/TMDB-API-01B4E4?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-En%20desarrollo-ff69b4?style=for-the-badge)
+
 <img width="3538" height="1712" alt="image" src="https://github.com/user-attachments/assets/7e01497b-764a-4f07-ba96-eec612c18ff4" />
 
 CineMatch es una aplicación web de recomendación de películas.
@@ -174,7 +183,7 @@ Primero, crear un archivo `.env` en la raíz del proyecto tomando como referenci
 ```bash
 cp .env.example .env
 ```
-*Este comando crea una copia del archivo .env.example y la nombra como .env*
+####Este comando crea una copia del archivo .env.example y la nombra como .env
 
 Luego editar el archivo `.env` y agregar la API key:
 
