@@ -300,20 +300,6 @@ http://localhost:8081
 
 ---
 
-## Variables de entorno
-
-| Variable       | Descripción                                          |
-| -------------- | ---------------------------------------------------- |
-| `TMDB_API_KEY` | API key utilizada por el backend para consultar TMDB |
-
----
-
-## Autor
-
-Proyecto desarrollado por Mathias Videla.
-
----
-
 ## Créditos
 
 Este proyecto utiliza datos de The Movie Database API.
