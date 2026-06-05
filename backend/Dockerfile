@@ -1,6 +1,3 @@
-FROM ubuntu:latest
-LABEL authors="mathiasvidela"
-
 FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
@@ -13,6 +10,8 @@ RUN mvn clean package -DskipTests
 
 
 FROM eclipse-temurin:21-jdk-alpine
+
+LABEL authors="mathiasvidela"
 
 WORKDIR /app
 
