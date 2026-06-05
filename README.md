@@ -171,17 +171,17 @@ http://localhost:8080/api/movies?genres=28%7C878&yearFrom=2000&yearTo=2026&durat
 
 Parámetros disponibles:
 
-| Parámetro  | Descripción                    | Ejemplo                                         |            |
-| ---------- | ------------------------------ | ----------------------------------------------- | ---------- |
-| `genres`   | IDs de géneros separados por ` | `                                               | `28%7C878` |
-| `yearFrom` | Año inicial                    | `2000`                                          |            |
-| `yearTo`   | Año final                      | `2026`                                          |            |
-| `duration` | Duración preferida             | `short`, `normal`, `long`                       |            |
-| `sortBy`   | Tipo de recomendación          | `popular`, `top_rated`, `recent`, `hidden_gems` |            |
+| Parámetro  | Descripción                    | Ejemplo                                         |            
+| ---------- | ------------------------------ | ----------------------------------------------- |
+| `genres`   | IDs de géneros separados por   | `28%35`                                         |          
+| `yearFrom` | Año inicial                    | `2000`                                          |            
+| `yearTo`   | Año final                      | `2026`                                          |            
+| `duration` | Duración preferida             | `short`, `normal`, `long`                       |            
+| `sortBy`   | Tipo de recomendación          | `popular`, `top_rated`, `recent`, `hidden_gems` |            
 
 ---
 
-## Requisitos previos
+## Requisitos previos para utilizar la app de manera local
 
 Para ejecutar el proyecto se necesita tener instalado:
 
