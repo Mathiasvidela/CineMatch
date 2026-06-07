@@ -163,71 +163,57 @@ Parámetros disponibles:
 
 ---
 
-## Requisitos previos para utilizar la app de manera local
+## Cómo instalar y ejecutar CineMatch
 
-Para ejecutar el proyecto se necesita tener instalado:
+En esta sección vas a encontrar los pasos necesarios para clonar el proyecto, configurar la API key de TMDB y levantar la aplicación localmente usando Docker.
+## Cómo instalar y ejecutar CineMatch
+
+### 1. Requisitos previos
+
+Antes de comenzar, asegurate de tener instalado:
 
 * Git
 * Docker Desktop
 * Una API key de TMDB
 
----
+### 2. Clonar el repositorio
 
-## Configuración de la API key
+```bash
+git clone https://github.com/Mathiasvidela/CineMatch
+cd CineMatch
+```
 
-Este proyecto utiliza la API de TMDB.
+### 3. Configurar la API key de TMDB
 
-Link: www.themoviedb.org
+Este proyecto utiliza la API de TMDB para obtener información de películas, pósters y ratings.
 
 Por seguridad, la API key real no está incluida en el repositorio.
 
-Primero, crear un archivo `.env` en la raíz del proyecto tomando como referencia `.env.example`.
+Primero, creá un archivo `.env` en la raíz del proyecto tomando como referencia el archivo `.env.example`:
 
 ```bash
 cp .env.example .env
 ```
-*Este comando crea una copia del archivo .env.example y la nombra como .env*
 
-Luego editar el archivo `.env` y agregar la API key:
-
-```env
-TMDB_API_KEY=tu_api_key_de_tmdb
-```
-
----
-
-## Archivo `.env.example`
-
-El repositorio incluye un archivo `.env.example` con esta estructura:
+Luego, abrí el archivo `.env` y agregá tu API key:
 
 ```env
 TMDB_API_KEY=tu_api_key_de_tmdb
 ```
 
-Cada persona que clone el proyecto debe crear su propio archivo `.env`.
+### 4. Levantar el proyecto con Docker
 
----
-
-## Ejecutar el proyecto con Docker
-
-Desde la raíz del proyecto ejecutar:
+Desde la raíz del proyecto, ejecutá:
 
 ```bash
 docker compose up --build
 ```
 
-Docker va a levantar dos servicios:
+Docker va a levantar automáticamente el frontend y el backend.
 
-```txt
-frontend → http://localhost:8081
-backend  → http://localhost:8080
-```
+### 5. Abrir la aplicación
 
----
-
-## Abrir la aplicación
-
-Una vez levantado Docker, abrir en el navegador:
+Una vez que los contenedores estén corriendo, abrí en el navegador:
 
 ```txt
 http://localhost:8081
@@ -237,77 +223,6 @@ El backend queda disponible en:
 
 ```txt
 http://localhost:8080
-```
-
-Para probar el endpoint directamente:
-
-```txt
-http://localhost:8080/api/movies
-```
-
----
-
-## Probar el backend con filtros
-
-Ejemplo de búsqueda de películas de acción o ciencia ficción:
-
-```txt
-http://localhost:8080/api/movies?genres=28%7C878&yearFrom=2000&yearTo=2026&duration=normal&sortBy=popular
-```
-
-Ejemplo de terror reciente:
-
-```txt
-http://localhost:8080/api/movies?genres=27&yearFrom=2010&yearTo=2026&duration=normal&sortBy=popular
-```
-
-Ejemplo de dramas mejor valorados:
-
-```txt
-http://localhost:8080/api/movies?genres=18&yearFrom=1990&yearTo=2026&duration=normal&sortBy=top_rated
-```
----
-
-## Puertos utilizados
-
-| Servicio | Puerto local | Descripción     |
-| -------- | -----------: | --------------- |
-| Frontend |       `8081` | Interfaz web    |
-| Backend  |       `8080` | API Spring Boot |
-
----
-
-## Docker
-
-El proyecto utiliza Docker Compose para levantar los servicios.
-
-### Backend
-
-El backend se construye usando el archivo:
-
-```txt
-backend/Dockerfile
-```
-
-Este Dockerfile:
-
-1. Usa Maven para compilar el proyecto.
-2. Genera el archivo `.jar`.
-3. Ejecuta la aplicación con Java.
-4. Expone el puerto `8080`.
-
-### Frontend
-
-El frontend se sirve con Nginx usando la carpeta:
-
-```txt
-frontend/
-```
-
-Nginx toma el archivo `index.html` y lo muestra en:
-
-```txt
-http://localhost:8081
 ```
 
 ---
