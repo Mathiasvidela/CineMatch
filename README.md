@@ -224,10 +224,3 @@ El backend queda disponible en:
 ```txt
 http://localhost:8080
 ```
-
----
-
-## Créditos
-
-Este proyecto utiliza datos de The Movie Database API.
-Toda la información de películas, pósters y ratings proviene de TMDB.
