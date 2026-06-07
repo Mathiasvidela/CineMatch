@@ -166,7 +166,6 @@ Parámetros disponibles:
 ## Cómo instalar y ejecutar CineMatch
 
 En esta sección vas a encontrar los pasos necesarios para clonar el proyecto, configurar la API key de TMDB y levantar la aplicación localmente usando Docker.
-## Cómo instalar y ejecutar CineMatch
 
 ### 1. Requisitos previos
 
