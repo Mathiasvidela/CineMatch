@@ -23,9 +23,10 @@ El proyecto está dividido en dos partes:
 
 
 > flujo de preguntas
-
+<img width="24432" height="4102" alt="image" src="https://github.com/user-attachments/assets/63c662a8-d58d-45ad-9ae0-c42cb2c2864d" />
 
 > resultados de películas
+<img width="6052" height="4102" alt="image" src="https://github.com/user-attachments/assets/d7f3560e-413a-40af-9a61-ba7e66c2c5fe" />
 
 ---
 
