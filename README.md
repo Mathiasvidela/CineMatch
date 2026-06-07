@@ -171,9 +171,12 @@ En esta sección vas a encontrar los pasos necesarios para clonar el proyecto, c
 
 Antes de comenzar, asegurate de tener instalado:
 
-* Git
-* Docker Desktop
-* Una API key de TMDB
+Antes de comenzar, asegurate de tener instalado:
+
+* [Git](https://git-scm.com/) para clonar el repositorio.
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) para levantar el frontend y el backend.
+* [Una API key de TMDB](https://www.themoviedb.org/settings/api) para consultar la información de películas.
+
 
 ### 2. Clonar el repositorio
 
