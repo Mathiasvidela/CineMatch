@@ -33,22 +33,25 @@ El proyecto está dividido en dos partes:
 
 ### Frontend
 
-![Movie Picker](https://img.shields.io/badge/CineMatch-Movie_Picker-ffdd00?style=for-the-badge)
-![Frontend](https://img.shields.io/badge/Frontend-Vanilla_JS-39ff14?style=for-the-badge&logo=javascript&logoColor=black)
-![Styles](https://img.shields.io/badge/UI-Neo_Brutalism-ff4fa3?style=for-the-badge)
-![Backend](https://img.shields.io/badge/Backend-Java_Spring-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
-![API](https://img.shields.io/badge/Data-TMDB_API-01b4e4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
-![Docker](https://img.shields.io/badge/Run_With-Docker_Compose-2496ed?style=for-the-badge&logo=docker&logoColor=white)
+<p>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+</p>
 
 ### Backend
 
-![Java](https://img.shields.io/badge/Backend-Java_21-f89820?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/API-Spring_Boot-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
-![Maven](https://img.shields.io/badge/Build-Maven-c71a36?style=for-the-badge&logo=apachemaven&logoColor=white)
+<p>
+  <img src="https://img.shields.io/badge/Java_21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" />
+</p>
 
 ### API externa
 
-![TMDB](https://img.shields.io/badge/TMDB-API-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
+<p>
+  <img src="https://img.shields.io/badge/TMDB_API-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white" />
+</p>
 
 ### Contenedores
 
