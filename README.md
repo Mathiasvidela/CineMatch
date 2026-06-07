@@ -33,15 +33,15 @@ El proyecto está dividido en dos partes:
 
 ### Frontend
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML](https://img.shields.io/badge/Markup-HTML5-ff6b35?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/Styles-CSS3-2965f1?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/Logic-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
 
 ### Backend
 
-![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![Java](https://img.shields.io/badge/Backend-Java_21-f89820?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/API-Spring_Boot-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
+![Maven](https://img.shields.io/badge/Build-Maven-c71a36?style=for-the-badge&logo=apachemaven&logoColor=white)
 
 ### API externa
 
