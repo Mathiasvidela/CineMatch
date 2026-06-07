@@ -181,7 +181,6 @@ Antes de comenzar, asegurate de tener instalado:
 
 ```bash
 git clone https://github.com/Mathiasvidela/CineMatch
-cd CineMatch
 ```
 
 ### 3. Configurar la API key de TMDB
