@@ -116,23 +116,23 @@ Esto permite no exponer la API key directamente en el código JavaScript del nav
 La aplicación utiliza 4 pasos principales:
 
 ### 1. Géneros
-
 El usuario puede elegir hasta 3 géneros.
+
 <img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/3770bc58-7d69-4727-8d2d-e174f4d98dad" />
 
 ### 2. Años
-
 El usuario selecciona un rango de años.
+
 <img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/4bbd8e26-da92-4331-b615-18d7e7579406" />
 
 ### 3. Duración
-
 El usuario elige la duración preferida:
+
 <img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/2ab6c86b-d188-4559-99f1-5e70a6a496bc" />
 
 ### 4. Tipo de recomendación
-
 El usuario elige cómo ordenar los resultados:
+
 <img width="3344" height="762" alt="image" src="https://github.com/user-attachments/assets/0b1a2a02-0428-4eb9-bf4b-cd6193d85ba9" />
 
 ---
@@ -168,8 +168,6 @@ Parámetros disponibles:
 En esta sección vas a encontrar los pasos necesarios para clonar el proyecto, configurar la API key de TMDB y levantar la aplicación localmente usando Docker.
 
 ### 1. Requisitos previos
-
-Antes de comenzar, asegurate de tener instalado:
 
 Antes de comenzar, asegurate de tener instalado:
 
