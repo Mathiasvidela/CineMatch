@@ -33,9 +33,12 @@ El proyecto está dividido en dos partes:
 
 ### Frontend
 
-![HTML](https://img.shields.io/badge/Markup-HTML5-ff6b35?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/Styles-CSS3-2965f1?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/Logic-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
+![Movie Picker](https://img.shields.io/badge/CineMatch-Movie_Picker-ffdd00?style=for-the-badge)
+![Frontend](https://img.shields.io/badge/Frontend-Vanilla_JS-39ff14?style=for-the-badge&logo=javascript&logoColor=black)
+![Styles](https://img.shields.io/badge/UI-Neo_Brutalism-ff4fa3?style=for-the-badge)
+![Backend](https://img.shields.io/badge/Backend-Java_Spring-6db33f?style=for-the-badge&logo=springboot&logoColor=white)
+![API](https://img.shields.io/badge/Data-TMDB_API-01b4e4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
+![Docker](https://img.shields.io/badge/Run_With-Docker_Compose-2496ed?style=for-the-badge&logo=docker&logoColor=white)
 
 ### Backend
 
