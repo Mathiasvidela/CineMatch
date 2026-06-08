@@ -6,6 +6,8 @@
 ![TMDB](https://img.shields.io/badge/TMDB-API-01B4E4?style=flat-square)
 
 <img width="3538" height="1712" alt="image" src="https://github.com/user-attachments/assets/7e01497b-764a-4f07-ba96-eec612c18ff4" />
+<img width="800" height="450" alt="header-gif" src="https://github.com/user-attachments/assets/ba927770-4f24-464f-ba56-cdb8342847ea" />
+
 
 CineMatch es una aplicación web de recomendación de películas.
 El usuario responde una serie de preguntas sobre sus gustos y la app devuelve recomendaciones personalizadas utilizando la API de TMDB.
@@ -166,61 +168,108 @@ Parámetros disponibles:
 
 ## Cómo instalar y ejecutar CineMatch
 
-En esta sección vas a encontrar los pasos necesarios para clonar el proyecto, configurar la API key de TMDB y levantar la aplicación localmente usando Docker.
+En esta sección vas a encontrar una guía paso a paso para descargar el proyecto, configurar la API key de TMDB y levantar la aplicación de manera local usando Docker.
+
+---
 
 ### 1. Requisitos previos
 
-Antes de comenzar, asegurate de tener instalado:
+Antes de comenzar, asegurate de tener instalado lo siguiente:
 
-* [Git](https://git-scm.com/) para clonar el repositorio.
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/) para levantar el frontend y el backend.
-* [Una API key de TMDB](https://www.themoviedb.org/settings/api) para consultar la información de películas.
+* [Git](https://git-scm.com/) para clonar el repositorio en tu computadora.
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) para ejecutar el frontend y el backend en contenedores.
+* [Una API key de TMDB](https://www.themoviedb.org/settings/api) para poder consultar la información de películas.
 
+> Importante: sin la API key de TMDB, el backend no va a poder obtener las películas.
+
+---
 
 ### 2. Clonar el repositorio
+
+Abrí una terminal y ejecutá el siguiente comando:
 
 ```bash
 git clone https://github.com/Mathiasvidela/CineMatch
 ```
 
+Luego ingresá a la carpeta del proyecto:
+
+```bash
+cd CineMatch
+```
+
+---
+
 ### 3. Configurar la API key de TMDB
 
-Este proyecto utiliza la API de TMDB para obtener información de películas, pósters y ratings.
+Este proyecto utiliza la API de TMDB para obtener información de películas, pósters, fechas de estreno y ratings.
 
-Por seguridad, la API key real no está incluida en el repositorio.
+Por seguridad, la API key real no está incluida en el repositorio. Cada persona que clone el proyecto debe crear su propio archivo de variables de entorno.
 
-Primero, creá un archivo `.env` en la raíz del proyecto tomando como referencia el archivo `.env.example`:
+Desde la raíz del proyecto, creá un archivo `.env` tomando como base el archivo `.env.example`:
 
 ```bash
 cp .env.example .env
 ```
 
-Luego, abrí el archivo `.env` y agregá tu API key:
+Luego abrí el archivo `.env` y reemplazá el valor de ejemplo por tu propia API key de TMDB:
 
 ```env
 TMDB_API_KEY=tu_api_key_de_tmdb
 ```
 
+El archivo `.env` debería quedar ubicado en la raíz del proyecto, al mismo nivel que `docker-compose.yml`.
+
+---
+
 ### 4. Levantar el proyecto con Docker
 
-Desde la raíz del proyecto, ejecutá:
+Antes de ejecutar el proyecto, asegurate de tener **Docker Desktop abierto y en funcionamiento**.
+
+> Si Docker Desktop no está abierto, el comando puede fallar porque Docker no va a estar disponible desde la terminal.
+
+Una vez configurada la API key, ejecutá el siguiente comando desde la raíz del proyecto:
 
 ```bash
 docker compose up --build
 ```
 
-Docker va a levantar automáticamente el frontend y el backend.
+Este comando construye y levanta automáticamente los servicios necesarios para ejecutar la aplicación:
+
+```txt
+frontend → http://localhost:8081
+backend  → http://localhost:8080
+```
+
+
+Este comando construye y levanta los servicios necesarios para ejecutar la aplicación:
+
+```txt
+frontend → http://localhost:8081
+backend  → http://localhost:8080
+```
+
+---
 
 ### 5. Abrir la aplicación
 
-Una vez que los contenedores estén corriendo, abrí en el navegador:
+Cuando los contenedores estén corriendo, abrí el navegador e ingresá a:
 
 ```txt
 http://localhost:8081
 ```
 
-El backend queda disponible en:
+Desde ahí vas a poder usar CineMatch, responder las preguntas y obtener recomendaciones de películas.
+
+El backend también queda disponible en:
 
 ```txt
 http://localhost:8080
 ```
+
+Para probar directamente el endpoint principal podés usar:
+
+```txt
+http://localhost:8080/api/movies
+```
+
