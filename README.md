@@ -261,7 +261,14 @@ http://localhost:8080
 Además de poder construir el proyecto localmente con `docker compose up --build`, CineMatch también cuenta con imágenes publicadas en Docker Hub.
 
 Esto permite descargar y ejecutar los servicios sin tener que construir las imágenes manualmente desde el código fuente.
-Además, el proyecto cuenta con GitHub Actions para automatizar su publicación. Cada vez que se realizan cambios en la rama principal, las imágenes del frontend y del backend se actualizan automáticamente en Docker Hub.
+
+##Automatización
+
+El proyecto también utiliza GitHub Actions para automatizar la publicación de las imágenes Docker.
+
+Cada vez que se realizan cambios en la rama principal del repositorio, las imágenes del frontend y del backend se actualizan automáticamente en Docker Hub.
+
+De esta manera, las imágenes publicadas se mantienen actualizadas sin necesidad de ejecutar manualmente los comandos de construcción y publicación.
 
 ### Imágenes disponibles
 
