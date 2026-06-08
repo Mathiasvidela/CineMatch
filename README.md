@@ -256,11 +256,12 @@ El backend también queda disponible en:
 ```txt
 http://localhost:8080
 ```
-## Imágenes publicadas en Docker Hub
+## Imágenes publicadas en Docker Hub y automatización
 
 Además de poder construir el proyecto localmente con `docker compose up --build`, CineMatch también cuenta con imágenes publicadas en Docker Hub.
 
 Esto permite descargar y ejecutar los servicios sin tener que construir las imágenes manualmente desde el código fuente.
+Además, el proyecto cuenta con GitHub Actions para automatizar su publicación. Cada vez que se realizan cambios en la rama principal, las imágenes del frontend y del backend se actualizan automáticamente en Docker Hub.
 
 ### Imágenes disponibles
 
