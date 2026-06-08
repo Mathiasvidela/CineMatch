@@ -256,4 +256,45 @@ El backend también queda disponible en:
 ```txt
 http://localhost:8080
 ```
+## Imágenes publicadas en Docker Hub
+
+Además de poder construir el proyecto localmente con `docker compose up --build`, CineMatch también cuenta con imágenes publicadas en Docker Hub.
+
+Esto permite descargar y ejecutar los servicios sin tener que construir las imágenes manualmente desde el código fuente.
+
+### Imágenes disponibles
+
+* Backend: `mathiasvidela/cinematch-backend:latest`
+* Frontend: `mathiasvidela/cinematch-frontend:latest`
+
+### Descargar las imágenes manualmente
+
+Para descargar la imagen del backend:
+
+```bash
+docker pull mathiasvidela/cinematch-backend:latest
+```
+
+Para descargar la imagen del frontend:
+
+```bash
+docker pull mathiasvidela/cinematch-frontend:latest
+```
+
+### Ejecutar el proyecto
+
+La forma recomendada de ejecutar el proyecto sigue siendo usando Docker Compose desde la raíz del repositorio:
+
+```bash
+docker compose up --build
+```
+
+De esta manera se levantan automáticamente ambos servicios:
+
+```txt
+frontend → http://localhost:8081
+backend  → http://localhost:8080
+```
+
+> Importante: para que la aplicación funcione correctamente, el backend necesita tener configurada la variable de entorno `TMDB_API_KEY`.
 
