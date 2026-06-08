@@ -262,7 +262,7 @@ Además de poder construir el proyecto localmente con `docker compose up --build
 
 Esto permite descargar y ejecutar los servicios sin tener que construir las imágenes manualmente desde el código fuente.
 
-##Automatización
+## Automatización
 
 El proyecto también utiliza GitHub Actions para automatizar la publicación de las imágenes Docker.
 
