@@ -266,6 +266,7 @@ Esto permite descargar y ejecutar los servicios sin tener que construir las imá
 
 * Backend: `mathiasvidela/cinematch-backend:latest`
 * Frontend: `mathiasvidela/cinematch-frontend:latest`
+<img width="2538" height="1438" alt="image" src="https://github.com/user-attachments/assets/af0d9419-a820-4b86-83ae-f4d860c4fdaf" />
 
 ### Descargar las imágenes manualmente
 
