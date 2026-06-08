@@ -6,8 +6,6 @@
 ![TMDB](https://img.shields.io/badge/TMDB-API-01B4E4?style=flat-square)
 
 <img width="3538" height="1712" alt="image" src="https://github.com/user-attachments/assets/7e01497b-764a-4f07-ba96-eec612c18ff4" />
-<img width="800" height="450" alt="header-gif" src="https://github.com/user-attachments/assets/ba927770-4f24-464f-ba56-cdb8342847ea" />
-
 
 CineMatch es una aplicación web de recomendación de películas.
 El usuario responde una serie de preguntas sobre sus gustos y la app devuelve recomendaciones personalizadas utilizando la API de TMDB.
@@ -233,22 +231,13 @@ Una vez configurada la API key, ejecutá el siguiente comando desde la raíz del
 ```bash
 docker compose up --build
 ```
-
+<img width="2540" height="1272" alt="image" src="https://github.com/user-attachments/assets/8cae09b8-10d7-4e65-bc4e-a47a11d822ee" />
 Este comando construye y levanta automáticamente los servicios necesarios para ejecutar la aplicación:
 
 ```txt
 frontend → http://localhost:8081
 backend  → http://localhost:8080
 ```
-
-
-Este comando construye y levanta los servicios necesarios para ejecutar la aplicación:
-
-```txt
-frontend → http://localhost:8081
-backend  → http://localhost:8080
-```
-
 ---
 
 ### 5. Abrir la aplicación
@@ -258,6 +247,7 @@ Cuando los contenedores estén corriendo, abrí el navegador e ingresá a:
 ```txt
 http://localhost:8081
 ```
+<img width="3545" height="2361" alt="image" src="https://github.com/user-attachments/assets/870b4bf6-b0db-4e5f-8780-558ab2e1e203" />
 
 Desde ahí vas a poder usar CineMatch, responder las preguntas y obtener recomendaciones de películas.
 
@@ -265,11 +255,5 @@ El backend también queda disponible en:
 
 ```txt
 http://localhost:8080
-```
-
-Para probar directamente el endpoint principal podés usar:
-
-```txt
-http://localhost:8080/api/movies
 ```
 
