@@ -1,5 +1,10 @@
 document.getElementById("footer-copyright").textContent = "© " + new Date().getFullYear() + " CineMatch. Built for Mathias Videla";
 
+//buscar en el navegador si corre localmente o por host
+const LOCAL_API_URL = "http://localhost:8080";
+const DEPLOYED_API_URL = "https://cinematch-0lck.onrender.com";
+const API_BASE_URL = window.location.hostname === "localhost" ? LOCAL_API_URL : DEPLOYED_API_URL;
+
 // Sección de búsqueda de películas
 const stepContainer = document.querySelector('#step-container');
 const btnBack = document.querySelector('#btn-back');
@@ -267,7 +272,7 @@ async function fetchMovies() {
   const recommendationValue = recommendationMap[respuestas.recommendation] || "popular";
   params.append("sortBy", recommendationValue);
 
-  const response = await fetch(`http://localhost:8080/api/movies?${params.toString()}`);
+  const response = await fetch(`${API_BASE_URL}/api/movies?${params.toString()}`);
 
   if (!response.ok) {
     throw new Error("Error al buscar películas");
