@@ -10,6 +10,16 @@
 CineMatch es una aplicación web de recomendación de películas.
 El usuario responde una serie de preguntas sobre sus gustos y la app devuelve recomendaciones personalizadas utilizando la API de TMDB.
 
+## Probá CineMatch online
+
+La aplicación se encuentra desplegada y disponible para probar desde el navegador:
+
+[Ver demo online](https://cine-match-project.vercel.app/)
+
+No es necesario instalar el proyecto localmente para usar esta versión.
+
+---
+
 El proyecto está dividido en dos partes:
 
 * **Frontend:** HTML, CSS y JavaScript.
@@ -306,4 +316,3 @@ backend  → http://localhost:8080
 ```
 
 > Importante: para que la aplicación funcione correctamente, el backend necesita tener configurada la variable de entorno `TMDB_API_KEY`.
-
