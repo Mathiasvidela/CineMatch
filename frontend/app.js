@@ -684,25 +684,38 @@ function renderNavbarAuth() {
   if (user) {
     navLogin.outerHTML = `
       <div class="nav-auth-user" id="nav-auth-user">
-
-        <div class="nav-user-pill" id="nav-user-pill">
-          <span class="nav-user-icon">
-            <i class="fa-solid fa-user"></i>
-          </span>
-
-          <span class="nav-user-name">Hola, ${user.name}</span>
-        </div>  
-
-
-        <button class="nav-logout-btn" id="nav-logout-btn" type="button">
-          Cerrar sesión <i class="fa-solid fa-right-to-bracket"></i>
+        <button class="nav-auth-toggle" id="nav-auth-toggle" aria-label="Abrir menú de usuario" type="button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
+
+        <div class="nav-auth-dropdown" id="nav-auth-dropdown">
+          <div class="nav-user-pill" id="nav-user-pill">
+            <span class="nav-user-icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <span class="nav-user-name">Hola, ${user.name}</span>
+          </div>  
+
+          <button class="nav-logout-btn" id="nav-logout-btn" type="button">
+            Cerrar sesión <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
+        </div>
       </div>
     `;
 
     const logoutButton = document.querySelector("#nav-logout-btn");
-
     logoutButton.addEventListener("click", logout);
+
+    const authToggle = document.querySelector("#nav-auth-toggle");
+    const authDropdown = document.querySelector("#nav-auth-dropdown");
+    if (authToggle && authDropdown) {
+      authToggle.addEventListener("click", () => {
+        authToggle.classList.toggle("open");
+        authDropdown.classList.toggle("open");
+      });
+    }
   } else {
     navLogin.textContent = "Login";
     const isRoot = !window.location.pathname.includes("/pages/");
@@ -710,18 +723,4 @@ function renderNavbarAuth() {
   }
 }
 
-// Toggle menu responsive
-function initMobileMenu() {
-  const navToggle = document.querySelector("#nav-toggle");
-  const navMenu = document.querySelector("#navigation-menu");
-
-  if (navToggle && navMenu) {
-    navToggle.addEventListener("click", () => {
-      navToggle.classList.toggle("open");
-      navMenu.classList.toggle("open");
-    });
-  }
-}
-
 renderNavbarAuth();
-initMobileMenu();

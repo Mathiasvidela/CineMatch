@@ -116,53 +116,21 @@ body {
     background-color: var(--accent-yellow);
 }
 
-.nav-toggle {
+.mobile-bottom-nav {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 45px;
-    height: 45px;
-    background-color: var(--accent-yellow);
-    border: var(--border-width) solid var(--black);
-    box-shadow: var(--neo-shadow-small);
-    border-radius: var(--radius);
-    padding: 10px;
-    cursor: pointer;
-    z-index: 110;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.nav-toggle:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: var(--neo-shadow-medium);
-}
-
-.nav-toggle:active {
-    transform: translate(1px, 1px);
-    box-shadow: var(--neo-shadow-small);
-}
-
-.nav-toggle .bar {
-    width: 100%;
-    height: 4px;
-    background-color: var(--black);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-.nav-toggle.open .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.nav-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.open .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-auth-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-auth-toggle {
+    display: none;
+}
+
+.nav-auth-dropdown {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -663,71 +631,183 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding-bottom: 75px; /* Prevent fixed bottom navigation overlap */
+    }
+
     .navbar {
         height: 85px;
         padding: 0 1.5rem;
     }
 
-    .nav-toggle {
-        display: flex;
+    .logo {
+        width: 9rem; /* Shrink logo slightly on mobile header */
     }
 
     .nav-menu {
-        display: none;
-        /* Hidden by default */
-        position: absolute;
-        top: 82px;
-        /* Just below the bottom border */
-        left: -3px;
-        /* Align with layout borders */
-        width: calc(100% + 6px);
-        background-color: #FFFFFF;
-        border: var(--border-width) solid var(--black);
-        border-top: none;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 2rem;
-        gap: 1.5rem;
-        z-index: 99;
-        box-shadow: var(--neo-shadow-large);
-    }
-
-    .nav-menu.open {
         display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
-    .nav-link {
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    .nav-link.active::after {
-        bottom: 0;
-        height: 3px;
-        left: 35%;
-        right: 35%;
-    }
-
-    .btn-login {
-        text-align: center;
-        width: 100%;
+    /* Hide Home and Watchlist links in the top header on mobile */
+    .nav-menu #nav-discover,
+    .nav-menu #nav-watchlist {
+        display: none !important;
     }
 
     .nav-auth-user {
+        position: relative;
+    }
+
+    .nav-auth-toggle {
+        display: flex;
         flex-direction: column;
-        align-items: stretch;
+        justify-content: space-between;
+        width: 45px;
+        height: 45px;
+        background-color: var(--accent-yellow);
+        border: var(--border-width) solid var(--black);
+        box-shadow: var(--neo-shadow-small);
+        border-radius: var(--radius);
+        padding: 10px;
+        cursor: pointer;
+        z-index: 110;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .nav-auth-toggle:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: var(--neo-shadow-medium);
+    }
+
+    .nav-auth-toggle:active {
+        transform: translate(1px, 1px);
+        box-shadow: var(--neo-shadow-small);
+    }
+
+    .nav-auth-toggle .bar {
         width: 100%;
+        height: 4px;
+        background-color: var(--black);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-auth-toggle.open .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-auth-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-auth-toggle.open .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-auth-dropdown {
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        background-color: #FFFFFF;
+        border: var(--border-width) solid var(--black);
+        border-radius: var(--radius);
+        flex-direction: column;
+        padding: 1.2rem;
         gap: 10px;
+        z-index: 100;
+        box-shadow: var(--neo-shadow-large);
+        width: 230px;
     }
 
-    .nav-user-pill {
+    .nav-auth-dropdown.open {
+        display: flex;
+    }
+
+    .nav-auth-dropdown .nav-user-pill {
         justify-content: center;
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        white-space: normal;
+        text-align: center;
+        box-shadow: var(--neo-shadow-small);
     }
 
-    .nav-logout-btn {
+    .nav-auth-dropdown .nav-logout-btn {
         width: 100%;
         text-align: center;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+        box-shadow: var(--neo-shadow-small);
+    }
+
+    .nav-auth-dropdown .nav-logout-btn:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: var(--neo-shadow-medium);
+    }
+
+    .btn-login {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Bottom Navigation styles */
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 70px;
+        background-color: #FFFFFF;
+        border-top: var(--border-width) solid var(--black);
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1000;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .mobile-bottom-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #7A7A7A;
+        font-size: 0.8rem;
+        font-weight: 700;
+        gap: 4px;
+        width: 33.33%;
+        height: 100%;
+        position: relative;
+        transition: color 0.15s ease;
+    }
+
+    .mobile-bottom-link i {
+        font-size: 1.35rem;
+        transition: transform 0.15s ease;
+    }
+
+    .mobile-bottom-link.active {
+        color: var(--primary-blue);
+    }
+
+    .mobile-bottom-link.active::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 30%;
+        right: 30%;
+        height: 4px;
+        background-color: var(--primary-blue);
+        border-radius: 0 0 4px 4px;
+    }
+
+    .mobile-bottom-link:active i {
+        transform: scale(0.9);
     }
 }
 

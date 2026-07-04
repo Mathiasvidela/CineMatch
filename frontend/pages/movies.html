@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="../src/isotipo.svg" type="image/x-icon">
     <!-- Link root styling -->
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 
 <body>
@@ -18,11 +19,6 @@
     <header>
         <nav class="navbar" id="main-navbar">
             <a href="../index.html" class="logo" id="logo-brand"><img src="../src/logotipo.svg" alt=""></a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" type="button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
             <div class="nav-menu" id="navigation-menu">
                 <a href="../index.html" class="nav-link" id="nav-discover">Home</a>
                 <a href="watchlist.html" class="nav-link" id="nav-watchlist">Watchlist</a>
@@ -59,6 +55,22 @@
         <a href="../index.html" class="footer-logo" id="footer-brand">CineMatch</a>
         <p class="copyright" id="footer-copyright"></p>
     </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav">
+        <a href="../index.html" class="mobile-bottom-link" id="mobile-nav-home">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="watchlist.html" class="mobile-bottom-link" id="mobile-nav-watchlist">
+            <i class="fa-solid fa-heart"></i>
+            <span>Watchlist</span>
+        </a>
+        <a href="#" class="mobile-bottom-link active" id="mobile-nav-movies">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Buscar</span>
+        </a>
+    </nav>
 
     <script src="../app.js"></script>
 </body>
