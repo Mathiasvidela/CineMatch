@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CineMatch - Encontrá la película perfecta para vos en menos de un minuto. Deja de scrollear por horas y empezá a disfrutar.">
+    <title>CineMatch - Encontrá qué ver en menos de un minuto</title>
+    <link rel="shortcut icon" href="../src/isotipo.svg" type="image/x-icon">
+    <!-- Link root styling -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar" id="main-navbar">
+            <a href="../index.html" class="logo" id="logo-brand"><img src="../src/logotipo.svg"
+                    alt="logo de CineMatch"></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" type="button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-menu" id="navigation-menu">
+                <a href="../index.html" class="nav-link" id="nav-discover">Home</a>
+                <a href="watchlist.html" class="nav-link" id="nav-watchlist">Watchlist</a>
+                <a href="login.html" class="nav-link btn-login" id="nav-login">Login <i
+                        class="fa-solid fa-right-to-bracket"></i></a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="auth-section" class="auth-section">
+            <div class="auth-card">
+
+                <div class="auth-tabs">
+                    <button id="show-login-btn" class="auth-tab active" type="button">
+                        Iniciar sesión
+                    </button>
+
+                    <button id="show-register-btn" class="auth-tab" type="button">
+                        Crear cuenta
+                    </button>
+                </div>
+
+                <!-- LOGIN -->
+                <div id="login-box">
+                    <h2>Iniciar sesión</h2>
+                    <p class="step-subtitle">
+                        Entrá a tu cuenta para guardar tus películas y series favoritas.
+                    </p>
+
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" placeholder="tuemail@gmail.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" placeholder="Tu contraseña" required />
+                        </div>
+
+                        <button type="submit" class="primary-button">
+                            Iniciar sesión
+                        </button>
+                    </form>
+                </div>
+
+                <!-- REGISTER -->
+                <div id="register-box" class="hidden">
+                    <h2>Crear cuenta</h2>
+                    <p class="step-subtitle">
+                        Creá tu cuenta para empezar a armar tu Watchlist.
+                    </p>
+
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-name">Nombre</label>
+                            <input type="text" id="register-name" placeholder="Tu nombre" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" placeholder="tuemail@gmail.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-password">Contraseña</label>
+                            <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" required />
+                        </div>
+
+                        <button type="submit" class="primary-button">
+                            Crear cuenta
+                        </button>
+                    </form>
+                </div>
+
+                <p id="auth-message" class="auth-message"></p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="main-footer">
+        <a href="#" class="footer-logo" id="footer-brand">CineMatch</a>
+        <p class="copyright" id="footer-copyright"></p>
+    </footer>
+
+    <script src="../app.js"></script>
+</body>
+
+</html>

@@ -538,3 +538,190 @@ function setupStepListeners() {
   }
 }
 
+//acceso login y registro
+const loginMessage = document.querySelector("#login-message");
+
+const loginBox = document.querySelector("#login-box");
+const registerBox = document.querySelector("#register-box");
+
+const showLoginBtn = document.querySelector("#show-login-btn");
+const showRegisterBtn = document.querySelector("#show-register-btn");
+
+const loginForm = document.querySelector("#login-form");
+const registerForm = document.querySelector("#register-form");
+
+const authMessage = document.querySelector("#auth-message");
+
+if (showLoginBtn && showRegisterBtn) {
+  showLoginBtn.addEventListener("click", () => {
+    loginBox.classList.remove("hidden");
+    registerBox.classList.add("hidden");
+
+    showLoginBtn.classList.add("active");
+    showRegisterBtn.classList.remove("active");
+
+    authMessage.textContent = "";
+    authMessage.className = "auth-message";
+  });
+
+  showRegisterBtn.addEventListener("click", () => {
+    registerBox.classList.remove("hidden");
+    loginBox.classList.add("hidden");
+
+    showRegisterBtn.classList.add("active");
+    showLoginBtn.classList.remove("active");
+
+    authMessage.textContent = "";
+    authMessage.className = "auth-message";
+  });
+}
+
+
+//login
+if (loginForm) {
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = document.querySelector("#login-email").value;
+    const password = document.querySelector("#login-password").value;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "No se pudo iniciar sesión");
+      }
+
+      localStorage.setItem("cinematchUser", JSON.stringify(data));
+
+      authMessage.textContent = `Bienvenido, ${data.name}`;
+      authMessage.className = "auth-message success";
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 800);
+
+    } catch (error) {
+      authMessage.textContent = error.message;
+      authMessage.className = "auth-message error";
+    }
+  });
+}
+//registro
+if (registerForm) {
+  registerForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector("#register-name").value;
+    const email = document.querySelector("#register-email").value;
+    const password = document.querySelector("#register-password").value;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "No se pudo crear la cuenta");
+      }
+
+      localStorage.setItem("cinematchUser", JSON.stringify(data));
+
+      authMessage.textContent = `Cuenta creada. Bienvenido, ${data.name}`;
+      authMessage.className = "auth-message success";
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 800);
+
+    } catch (error) {
+      authMessage.textContent = error.message;
+      authMessage.className = "auth-message error";
+    }
+  });
+}
+
+//verificar si hay usuario logueado
+function getLoggedUser() {
+  return JSON.parse(localStorage.getItem("cinematchUser"));
+}
+
+//cerrar sesion
+function logout() {
+  localStorage.removeItem("cinematchUser");
+  window.location.reload();
+}
+
+//actualizar navbar
+function renderNavbarAuth() {
+  const navLogin = document.querySelector("#nav-login");
+
+  if (!navLogin) return;
+
+  const user = getLoggedUser();
+
+  if (user) {
+    navLogin.outerHTML = `
+      <div class="nav-auth-user" id="nav-auth-user">
+
+        <div class="nav-user-pill" id="nav-user-pill">
+          <span class="nav-user-icon">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span class="nav-user-name">Hola, ${user.name}</span>
+        </div>  
+
+
+        <button class="nav-logout-btn" id="nav-logout-btn" type="button">
+          Cerrar sesión <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+      </div>
+    `;
+
+    const logoutButton = document.querySelector("#nav-logout-btn");
+
+    logoutButton.addEventListener("click", logout);
+  } else {
+    navLogin.textContent = "Login";
+    const isRoot = !window.location.pathname.includes("/pages/");
+    navLogin.href = isRoot ? "pages/login.html" : "login.html";
+  }
+}
+
+// Toggle menu responsive
+function initMobileMenu() {
+  const navToggle = document.querySelector("#nav-toggle");
+  const navMenu = document.querySelector("#navigation-menu");
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("open");
+      navMenu.classList.toggle("open");
+    });
+  }
+}
+
+renderNavbarAuth();
+initMobileMenu();

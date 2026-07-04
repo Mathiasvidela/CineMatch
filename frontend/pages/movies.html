@@ -18,10 +18,17 @@
     <header>
         <nav class="navbar" id="main-navbar">
             <a href="../index.html" class="logo" id="logo-brand"><img src="../src/logotipo.svg" alt=""></a>
-            <ul class="nav-menu" id="navigation-menu">
-                <li><a href="../index.html" class="nav-link" id="nav-discover">Home</a></li>
-                <li><a href="watchlist.html" class="nav-link" id="nav-watchlist">Watchlist</a></li>
-            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" type="button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-menu" id="navigation-menu">
+                <a href="../index.html" class="nav-link" id="nav-discover">Home</a>
+                <a href="watchlist.html" class="nav-link" id="nav-watchlist">Watchlist</a>
+                <a href="login.html" class="nav-link btn-login" id="nav-login">Login <i
+                        class="fa-solid fa-right-to-bracket"></i></a>
+            </div>
         </nav>
     </header>
 
