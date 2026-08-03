@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="CineMatch - Sección Watchlist en desarrollo. Muy pronto podrás guardar tus películas favoritas.">
-    <title>CineMatch - Watchlist (En Desarrollo)</title>
+        content="CineMatch - Mi Watchlist. Organizá las películas y series que querés ver después.">
+    <title>CineMatch - Mi Watchlist</title>
     <link rel="shortcut icon" href="../src/isotipo.svg" type="image/x-icon">
     <!-- Link root styling -->
     <link rel="stylesheet" href="../style.css">
@@ -23,7 +23,8 @@
             <div class="nav-menu" id="navigation-menu">
                 <a href="../index.html" class="nav-link" id="nav-discover">Home</a>
                 <a href="#" class="nav-link active" id="nav-watchlist">Watchlist</a>
-                <a href="login.html" class="nav-link btn-login" id="nav-login">Login</a>
+                <a href="login.html" class="nav-link btn-login" id="nav-login">Login <i
+                        class="fa-solid fa-right-to-bracket"></i></a>
             </div>
         </nav>
     </header>
@@ -32,13 +33,11 @@
     <main class="main-content">
 
         <!-- Background Decor (Floating Neo-brutalist elements) -->
-        <!-- Popcorn Card -->
         <div class="floating-card card-star decor-popcorn" aria-hidden="true"
             style="font-size: 2.2rem; background-color: var(--accent-yellow);">
             🍿
         </div>
 
-        <!-- Film Reel Card -->
         <div class="floating-card card-film decor-tape" aria-hidden="true"
             style="width: 75px; height: 85px; color: var(--accent-pink); background-color: #FFFFFF;">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -52,38 +51,68 @@
             </svg>
         </div>
 
-        <section class="watchlist-container" id="watchlist-section">
+        <div class="watchlist-page-container">
 
-            <div class="construction-card">
-                <div class="caution-stripe"></div>
+            <!-- Hero Section -->
+            <section class="watchlist-hero" id="watchlist-hero">
+                <span class="watchlist-badge">Tu espacio personal</span>
+                <h1 class="watchlist-title">Mi Watchlist</h1>
+                <p class="watchlist-subtitle">Organizá las películas y series que querés ver después.</p>
+                <div class="watchlist-user-greeting" id="watchlist-user-greeting" style="display: none;"></div>
+            </section>
 
-
-
-                <div class="construction-title-container">
-                    <div class="construction-badge">SECCIÓN EN DESARROLLO 🚀</div>
-                    <h1 class="construction-title">Watchlist en Rodaje</h1>
+            <!-- Stats Overview -->
+            <section class="watchlist-stats-grid" id="watchlist-stats">
+                <div class="watchlist-stat-card">
+                    <div class="stat-icon-wrapper stat-icon-total">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="watchlist-total-count">0</span>
+                        <span class="stat-label">Total Guardados</span>
+                    </div>
                 </div>
 
-                <p class="construction-desc">
-                    ¡Hola! Actualmente esta sección <strong>no está disponible</strong>.
-                </p>
+                <div class="watchlist-stat-card">
+                    <div class="stat-icon-wrapper stat-icon-movies">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="watchlist-movie-count">0</span>
+                        <span class="stat-label">Películas</span>
+                    </div>
+                </div>
 
+                <div class="watchlist-stat-card">
+                    <div class="stat-icon-wrapper stat-icon-tv">
+                        <i class="fa-solid fa-tv"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="watchlist-tv-count">0</span>
+                        <span class="stat-label">Series</span>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Filter Tabs -->
+            <section class="watchlist-filters" id="watchlist-filters">
+                <button type="button" class="watchlist-tab-btn active" data-filter="all" id="filter-all">
+                    <i class="fa-solid fa-layer-group"></i> Todo
+                </button>
+                <button type="button" class="watchlist-tab-btn" data-filter="movie" id="filter-movie">
+                    <i class="fa-solid fa-film"></i> Películas
+                </button>
+                <button type="button" class="watchlist-tab-btn" data-filter="tv" id="filter-tv">
+                    <i class="fa-solid fa-tv"></i> Series
+                </button>
+            </section>
 
-                <!-- Volver Button -->
-                <a href="../index.html" class="btn-volver">
-                    <!-- Arrow Left Icon -->
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12" />
-                        <polyline points="12 19 5 12 12 5" />
-                    </svg>
-                    <span>VOLVER A DISCOVER</span>
-                </a>
+            <!-- Dynamic Content (Grid, Loading, Empty, Blocked, Error) -->
+            <section id="watchlist-content">
+                <!-- Content will be rendered dynamically by watchlist.js -->
+            </section>
 
-            </div>
-
-        </section>
+        </div>
     </main>
 
     <!-- Footer Section -->
@@ -109,6 +138,7 @@
     </nav>
 
     <script src="../app.js"></script>
+    <script src="../js/watchlist.js"></script>
 </body>
 
 </html>

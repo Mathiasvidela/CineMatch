@@ -1,9 +1,17 @@
 package com.cinematch.backend.service;
 
+import com.cinematch.backend.dto.SearchResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.web.util.UriUtils;
+
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TmdbService {
@@ -90,4 +98,86 @@ public class TmdbService {
 
         return "popularity.desc";
     }
+
+    public List<SearchResponse> searchMulti(String query) {
+
+        String encodedQuery = UriUtils.encode(query, StandardCharsets.UTF_8);
+
+        String url = tmdbApiUrl
+                + "/search/multi"
+                + "?api_key=" + apiKey
+                + "&language=es-ES"
+                + "&query=" + encodedQuery
+                + "&include_adult=false";
+
+        JsonNode response = restClient
+                .get()
+                .uri(url)
+                .retrieve()
+                .body(JsonNode.class);
+
+        List<SearchResponse> results = new ArrayList<>();
+
+        if (response == null || !response.has("results")) {
+            return results;
+        }
+
+        for (JsonNode item : response.get("results")) {
+
+            String mediaType = item.path("media_type").asText();
+
+            if (!mediaType.equals("movie") && !mediaType.equals("tv")) {
+                continue;
+            }
+
+            Integer tmdbId = item.path("id").asInt();
+
+            String title = mediaType.equals("movie")
+                    ? item.path("title").asText()
+                    : item.path("name").asText();
+
+            String posterPath = item.path("poster_path").isNull()
+                    ? null
+                    : item.path("poster_path").asText();
+
+            String date = mediaType.equals("movie")
+                    ? item.path("release_date").asText()
+                    : item.path("first_air_date").asText();
+
+            Integer releaseYear = extractYear(date);
+
+            Double rating = item.path("vote_average").asDouble();
+
+            String genres = item.has("genre_ids")
+                    ? item.path("genre_ids").toString()
+                    : "";
+
+            SearchResponse searchResponse = new SearchResponse(
+                    tmdbId,
+                    title,
+                    mediaType,
+                    posterPath,
+                    releaseYear,
+                    rating,
+                    genres
+            );
+
+            results.add(searchResponse);
+        }
+
+        return results;
+    }
+
+    private Integer extractYear(String date) {
+        if (date == null || date.length() < 4) {
+            return null;
+        }
+
+        try {
+            return Integer.parseInt(date.substring(0, 4));
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
 }
