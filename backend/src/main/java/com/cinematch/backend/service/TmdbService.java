@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class TmdbService {
 
-
     @Value("${tmdb.api.key}")
     private String apiKey;
 
@@ -24,6 +23,12 @@ public class TmdbService {
     private String tmdbApiUrl;
 
     private final RestClient restClient = RestClient.create();
+
+    private final TmdbGenreService tmdbGenreService;
+
+    public TmdbService(TmdbGenreService tmdbGenreService) {
+        this.tmdbGenreService = tmdbGenreService;
+    }
 
     public String getMovies(
             String genres,
@@ -148,9 +153,7 @@ public class TmdbService {
 
             Double rating = item.path("vote_average").asDouble();
 
-            String genres = item.has("genre_ids")
-                    ? item.path("genre_ids").toString()
-                    : "";
+            String genres = tmdbGenreService.mapGenres(item.path("genre_ids"), mediaType);
 
             SearchResponse searchResponse = new SearchResponse(
                     tmdbId,
