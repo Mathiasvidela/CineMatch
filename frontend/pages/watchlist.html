@@ -32,34 +32,23 @@
     <!-- Main Content -->
     <main class="main-content">
 
-        <!-- Background Decor (Floating Neo-brutalist elements) -->
-        <div class="floating-card card-star decor-popcorn" aria-hidden="true"
-            style="font-size: 2.2rem; background-color: var(--accent-yellow);">
-            🍿
-        </div>
 
-        <div class="floating-card card-film decor-tape" aria-hidden="true"
-            style="width: 75px; height: 85px; color: var(--accent-pink); background-color: #FFFFFF;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 2v6" />
-                <path d="M12 16v6" />
-                <path d="M2 12h6" />
-                <path d="M16 12h6" />
-            </svg>
-        </div>
 
         <div class="watchlist-page-container">
 
             <!-- Hero Section -->
             <section class="watchlist-hero" id="watchlist-hero">
-                <span class="watchlist-badge">Tu espacio personal</span>
                 <h1 class="watchlist-title">Mi Watchlist</h1>
                 <p class="watchlist-subtitle">Organizá las películas y series que querés ver después.</p>
                 <div class="watchlist-user-greeting" id="watchlist-user-greeting" style="display: none;"></div>
             </section>
+
+            <!-- Desktop Search Button -->
+            <div class="watchlist-search-desktop-container">
+                <button id="open-search-modal-btn" class="open-search-modal-btn" type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i> + Buscar para guardar
+                </button>
+            </div>
 
             <!-- Stats Overview -->
             <section class="watchlist-stats-grid" id="watchlist-stats">
@@ -136,6 +125,37 @@
             <span>Buscar</span>
         </a>
     </nav>
+
+    <button id="mobile-search-fab" class="mobile-search-fab" type="button">
+        + Buscar
+    </button>
+
+    <!-- Search Modal -->
+    <div id="watchlist-search-modal" class="watchlist-search-modal hidden">
+        <div class="watchlist-search-overlay"></div>
+
+        <button id="close-search-modal-btn" class="search-modal-back-btn" type="button" aria-label="Cerrar búsqueda">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="watchlist-search-dialog">
+            <div class="search-modal-header">
+                <h2>Buscar para guardar</h2>
+                <p>Encontrá películas o series y agregalas a tu Watchlist.</p>
+            </div>
+
+            <form id="watchlist-search-form" class="search-form">
+                <input type="text" id="watchlist-search-input" placeholder="Buscar película o serie..." required
+                    autocomplete="off">
+                <button type="submit" class="btn-search">Buscar</button>
+            </form>
+            <div id="watchlist-search-message" class="search-message"></div>
+
+            <div id="search-results-section" class="search-results-section">
+                <div id="search-results-grid" class="search-results-grid"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="../app.js"></script>
     <script src="../js/watchlist.js"></script>

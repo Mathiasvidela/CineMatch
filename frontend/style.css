@@ -632,7 +632,8 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding-bottom: 75px; /* Prevent fixed bottom navigation overlap */
+        padding-bottom: 75px;
+        /* Prevent fixed bottom navigation overlap */
     }
 
     .navbar {
@@ -641,7 +642,8 @@ body {
     }
 
     .logo {
-        width: 9rem; /* Shrink logo slightly on mobile header */
+        width: 9rem;
+        /* Shrink logo slightly on mobile header */
     }
 
     .nav-menu {
@@ -1665,21 +1667,6 @@ input[type="range"]::-moz-range-thumb:hover {
     position: relative;
 }
 
-.watchlist-badge {
-    background-color: var(--accent-yellow);
-    color: var(--black);
-    border: var(--border-width) solid var(--black);
-    box-shadow: var(--neo-shadow-small);
-    font-weight: 800;
-    font-size: 0.85rem;
-    padding: 0.35rem 1rem;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 1rem;
-    display: inline-block;
-}
-
 .watchlist-title {
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
@@ -2040,8 +2027,13 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive Media Queries */
@@ -2111,5 +2103,309 @@ input[type="range"]::-moz-range-thumb:hover {
 
     .watchlist-state-card {
         padding: 2.5rem 1.2rem;
+    }
+
+    .mobile-search-fab {
+        display: flex;
+    }
+}
+
+/* ==========================================================================
+   Watchlist Search Modal & Buttons
+   ========================================================================== */
+
+.watchlist-search-desktop-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.open-search-modal-btn {
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-transform: uppercase;
+}
+
+.open-search-modal-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px #000000;
+    background-color: var(--accent-yellow);
+    color: var(--charcoal);
+}
+
+.open-search-modal-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--neo-shadow-small);
+}
+
+/* Modal Overlay & Dialog */
+.watchlist-search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.watchlist-search-modal.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.watchlist-search-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.watchlist-search-dialog {
+    position: relative;
+    background-color: var(--accent-lavender);
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-large);
+    border-radius: var(--radius);
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 2001;
+}
+
+/* Modal Header & Back Button */
+.search-modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-modal-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+}
+
+.search-modal-header p {
+    font-weight: 500;
+    color: var(--charcoal);
+}
+
+.search-modal-back-btn {
+    background-color: #FFFFFF;
+    color: var(--charcoal);
+    font-size: 1.5rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-small);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 2005;
+}
+
+.search-modal-back-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--neo-shadow-medium);
+    background-color: var(--accent-pink);
+    color: #FFFFFF;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+}
+
+.search-form input {
+    flex: 1;
+    border: var(--border-width) solid var(--black);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    box-shadow: var(--neo-shadow-medium);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form input:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--neo-shadow-large);
+}
+
+.btn-search {
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-medium);
+    padding: 0 2rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-transform: uppercase;
+}
+
+.btn-search:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--neo-shadow-large);
+    background-color: var(--accent-yellow);
+    color: var(--charcoal);
+}
+
+.search-message {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.search-message.success {
+    color: #1f8f2e;
+}
+
+.search-message.error {
+    color: var(--accent-pink);
+}
+
+/* Results Grid */
+.search-results-section {
+    width: 100%;
+}
+
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Save / Quitar Button in Results */
+.btn-save-item {
+    background-color: var(--accent-yellow);
+    color: var(--charcoal);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 0.9rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--neo-shadow-small);
+    border-radius: var(--radius);
+    padding: 0.8rem;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-save-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--neo-shadow-medium);
+    background-color: var(--primary-blue);
+    color: #FFFFFF;
+}
+
+.btn-save-item.saved {
+    background-color: var(--accent-pink);
+    color: #FFFFFF;
+}
+
+.btn-save-item.saved:hover {
+    background-color: #c90059;
+}
+
+/* Mobile FAB */
+.mobile-search-fab {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-search-fab {
+        display: flex;
+        position: fixed;
+        right: 18px;
+        bottom: 90px;
+        z-index: 1500;
+        align-items: center;
+        justify-content: center;
+        border: var(--border-width) solid var(--black);
+        box-shadow: var(--neo-shadow-medium);
+        border-radius: 999px;
+        padding: 14px 20px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 1.1rem;
+        cursor: pointer;
+        background-color: var(--primary-blue);
+        color: #FFFFFF;
+        text-transform: uppercase;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .mobile-search-fab:active {
+        transform: translate(2px, 2px);
+        box-shadow: var(--neo-shadow-small);
+    }
+
+    .search-modal-back-btn {
+        top: 15px;
+        right: 15px;
+        left: auto;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .watchlist-search-dialog {
+        width: 95%;
+        padding: 1.5rem;
+        max-height: 95vh;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .btn-search {
+        padding: 14px 16px;
+    }
+
+    .open-search-modal-btn {
+        display: none;
     }
 }

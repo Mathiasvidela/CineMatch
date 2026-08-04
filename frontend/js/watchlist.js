@@ -1,5 +1,6 @@
 let activeWatchlistFilter = "all";
 let watchlistItems = [];
+let searchResults = [];
 
 /**
  * 1. Lee y parsea el usuario logueado desde localStorage (key: cinematchUser).
@@ -57,6 +58,9 @@ function initWatchlistPage() {
       }
     });
   });
+
+  // Inicializar búsqueda y FAB
+  initWatchlistSearch();
 
   // Cargar elementos desde el backend
   loadWatchlist();
@@ -245,6 +249,12 @@ async function deleteWatchlistItem(itemId) {
 
     watchlistItems = watchlistItems.filter((i) => i.id !== itemId);
     renderWatchlist();
+    
+    // Update search results if modal is open
+    const modal = document.getElementById("watchlist-search-modal");
+    if (modal && !modal.classList.contains("hidden")) {
+      renderSearchResults(searchResults);
+    }
   } catch (error) {
     console.error("Error al eliminar item de watchlist:", error);
     alert(error.message || "Ocurrió un error al intentar eliminar.");
@@ -369,3 +379,266 @@ function escapeHtml(str) {
 
 // Escuchar el evento DOMContentLoaded para iniciar la lógica
 document.addEventListener("DOMContentLoaded", initWatchlistPage);
+
+/**
+ * ------------------------------------------------------------------
+ * LÓGICA DE BÚSQUEDA Y GUARDADO EN WATCHLIST
+ * ------------------------------------------------------------------
+ */
+
+function initWatchlistSearch() {
+  const searchForm = document.getElementById("watchlist-search-form");
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = document.getElementById("watchlist-search-input");
+      if (input && input.value.trim() !== "") {
+        searchContent(input.value.trim());
+      }
+    });
+  }
+
+  const openDesktopBtn = document.getElementById("open-search-modal-btn");
+  const mobileFabBtn = document.getElementById("mobile-search-fab");
+  const closeBtn = document.getElementById("close-search-modal-btn");
+  const modalOverlay = document.querySelector(".watchlist-search-overlay");
+
+  if (openDesktopBtn) openDesktopBtn.addEventListener("click", openSearchModal);
+  if (mobileFabBtn) mobileFabBtn.addEventListener("click", openSearchModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeSearchModal);
+  if (modalOverlay) modalOverlay.addEventListener("click", closeSearchModal);
+  
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const modal = document.getElementById("watchlist-search-modal");
+      if (modal && !modal.classList.contains("hidden")) {
+        closeSearchModal();
+      }
+    }
+  });
+}
+
+function openSearchModal() {
+  const modal = document.getElementById("watchlist-search-modal");
+  if (modal) {
+    modal.classList.remove("hidden");
+    const searchInput = document.getElementById("watchlist-search-input");
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 100);
+    }
+  }
+}
+
+function closeSearchModal() {
+  const modal = document.getElementById("watchlist-search-modal");
+  if (modal) {
+    modal.classList.add("hidden");
+  }
+}
+
+async function searchContent(query) {
+  if (!query) return;
+
+  renderSearchLoadingState();
+
+  try {
+    const response = await fetch(`${getApiBaseUrl()}/api/search?query=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: No pudimos realizar la búsqueda`);
+    }
+
+    const results = await response.json();
+    searchResults = results;
+    renderSearchResults(searchResults);
+  } catch (error) {
+    console.error("Error en búsqueda:", error);
+    renderSearchErrorState("No pudimos realizar la búsqueda. Por favor, intentá de nuevo.");
+  }
+}
+
+function renderSearchResults(results) {
+  const container = document.getElementById("search-results-grid");
+  const messageEl = document.getElementById("watchlist-search-message");
+  
+  if (!container) return;
+  
+  if (messageEl) {
+    messageEl.textContent = "";
+    messageEl.className = "search-message";
+  }
+
+  if (!results || results.length === 0) {
+    renderSearchEmptyState();
+    return;
+  }
+
+  const cardsHtml = results.map(item => {
+    const isMovie = item.mediaType === "movie";
+    const mediaBadgeText = isMovie ? "Película" : "Serie";
+    const mediaBadgeClass = isMovie ? "badge-movie" : "badge-tv";
+
+    const posterUrl = item.posterPath
+      ? `https://image.tmdb.org/t/p/w500${item.posterPath}`
+      : null;
+
+    const posterMarkup = posterUrl
+      ? `<img src="${posterUrl}" alt="${escapeHtml(item.title)}" class="watchlist-card-poster-img" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\\'watchlist-card-no-poster\\'><i class=\\'fa-solid fa-film\\'></i><span>Sin poster</span></div>';" />`
+      : `<div class="watchlist-card-no-poster"><i class="fa-solid fa-film"></i><span>Sin poster</span></div>`;
+
+    const genresFormatted = "Géneros"; // TMDB genre IDs to text not requested, fallback
+    const yearFormatted = item.releaseYear || "N/A";
+    const ratingFormatted = item.rating != null ? item.rating : "N/A";
+
+    const savedItem = watchlistItems.find(saved =>
+      saved.tmdbId === item.tmdbId &&
+      saved.mediaType === item.mediaType
+    );
+
+    const buttonClass = savedItem ? "btn-save-item saved btn-remove-item" : "btn-save-item btn-add-item";
+    const buttonIcon = savedItem ? "fa-solid fa-check" : "fa-solid fa-bookmark";
+    const buttonText = savedItem ? "Quitar" : "Guardar";
+    const actionData = savedItem ? `data-savedid="${savedItem.id}"` : `data-tmdbid="${item.tmdbId}"`;
+
+    return `
+      <article class="watchlist-card">
+        <div class="watchlist-card-poster">
+          ${posterMarkup}
+          <span class="watchlist-type-badge ${mediaBadgeClass}">${mediaBadgeText}</span>
+        </div>
+        <div class="watchlist-card-content">
+          <div class="watchlist-card-header">
+            <h3 class="watchlist-card-title">${escapeHtml(item.title)}</h3>
+            <div class="watchlist-card-meta">
+              <span class="watchlist-meta-year"><i class="fa-regular fa-calendar"></i> ${yearFormatted}</span>
+              <span class="watchlist-meta-rating"><i class="fa-solid fa-star"></i> ${ratingFormatted}</span>
+            </div>
+          </div>
+          <button type="button" class="${buttonClass}" ${actionData}>
+            <i class="${buttonIcon}"></i> ${buttonText}
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  container.innerHTML = cardsHtml;
+
+  // Add listeners for save buttons
+  const addButtons = container.querySelectorAll(".btn-add-item");
+  addButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tmdbId = Number(btn.getAttribute("data-tmdbid"));
+      saveSearchResultToWatchlist(tmdbId);
+    });
+  });
+  
+  // Add listeners for remove buttons
+  const removeButtons = container.querySelectorAll(".btn-remove-item");
+  removeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const savedId = Number(btn.getAttribute("data-savedid"));
+      deleteWatchlistItem(savedId);
+    });
+  });
+}
+
+async function saveSearchResultToWatchlist(tmdbId) {
+  const item = searchResults.find(r => r.tmdbId === tmdbId);
+  if (!item) return;
+
+  const user = getLoggedUser();
+  if (!user || !user.userId) {
+    const messageEl = document.getElementById("watchlist-search-message");
+    if (messageEl) {
+      messageEl.textContent = "Debés iniciar sesión para guardar en tu Watchlist.";
+      messageEl.className = "search-message error";
+    }
+    return;
+  }
+
+  const payload = {
+    userId: user.userId,
+    tmdbId: item.tmdbId,
+    title: item.title,
+    mediaType: item.mediaType,
+    posterPath: item.posterPath,
+    releaseYear: item.releaseYear,
+    rating: item.rating,
+    genres: item.genres
+  };
+
+  try {
+    const response = await fetch(`${getApiBaseUrl()}/api/watchlist`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    const messageEl = document.getElementById("watchlist-search-message");
+    if (!response.ok) {
+      if (messageEl) {
+        messageEl.textContent = data.message || "No se pudo guardar el elemento.";
+        messageEl.className = "search-message error";
+      }
+      return;
+    }
+
+    if (messageEl) {
+      messageEl.textContent = "Guardado en tu Watchlist";
+      messageEl.className = "search-message success";
+    }
+
+    // Recargar la lista de guardados y actualizar modal si está abierto
+    await loadWatchlist();
+    const modal = document.getElementById("watchlist-search-modal");
+    if (modal && !modal.classList.contains("hidden")) {
+      renderSearchResults(searchResults);
+    }
+  } catch (error) {
+    console.error("Error al guardar:", error);
+    const messageEl = document.getElementById("watchlist-search-message");
+    if (messageEl) {
+      messageEl.textContent = "Error de red al intentar guardar.";
+      messageEl.className = "search-message error";
+    }
+  }
+}
+
+function renderSearchLoadingState() {
+  const container = document.getElementById("search-results-grid");
+  if (!container) return;
+  container.innerHTML = `
+    <div class="watchlist-state-card loading-state-card" style="grid-column: 1 / -1; min-height: 200px;">
+      <div class="spinner"></div>
+      <h2>Buscando en CineMatch...</h2>
+    </div>
+  `;
+}
+
+function renderSearchEmptyState() {
+  const container = document.getElementById("search-results-grid");
+  if (!container) return;
+  container.innerHTML = `
+    <div class="watchlist-state-card empty-state-card" style="grid-column: 1 / -1; min-height: 200px;">
+      <div class="state-icon">🔍</div>
+      <h2>No encontramos resultados</h2>
+      <p>Probá con otro título.</p>
+    </div>
+  `;
+}
+
+function renderSearchErrorState(message) {
+  const container = document.getElementById("search-results-grid");
+  if (!container) return;
+  container.innerHTML = `
+    <div class="watchlist-state-card error-state-card" style="grid-column: 1 / -1; min-height: 200px;">
+      <div class="state-icon">⚠️</div>
+      <h2>No pudimos realizar la búsqueda</h2>
+      <p>${escapeHtml(message)}</p>
+    </div>
+  `;
+}
