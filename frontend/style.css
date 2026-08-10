@@ -1868,6 +1868,35 @@ input[type="range"]::-moz-range-thumb:hover {
     color: var(--primary-blue);
 }
 
+.watchlist-save-button {
+    margin-top: 1rem;
+    width: fit-content;
+    border: var(--border-width) solid var(--black);
+    background: var(--accent-yellow);
+    color: var(--charcoal);
+    box-shadow: var(--neo-shadow-small);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.watchlist-save-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--neo-shadow-medium);
+}
+
+.watchlist-save-button.saved,
+.watchlist-save-button:disabled {
+    background: var(--accent-pink);
+    color: #ffffff;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .watchlist-type-badge {
     position: absolute;
     top: 12px;

@@ -1,5 +1,31 @@
 document.getElementById("footer-copyright").textContent = "© " + new Date().getFullYear() + " CineMatch. Built for Mathias Videla";
 
+//mapa de generos
+const genreIdToName = {
+  28: "Acción",
+  12: "Aventura",
+  16: "Animación",
+  35: "Comedia",
+  80: "Crimen",
+  99: "Documental",
+  18: "Drama",
+  10751: "Familia",
+  14: "Fantasía",
+  36: "Historia",
+  27: "Terror",
+  10402: "Música",
+  9648: "Misterio",
+  10749: "Romance",
+  878: "Ciencia ficción",
+  10770: "Película de TV",
+  53: "Suspenso",
+  10752: "Bélica",
+  37: "Western"
+};
+
+//variable global
+let currentMovies = [];
+
 //buscar en el navegador si corre localmente o por host
 const LOCAL_API_URL = "http://localhost:8080";
 const DEPLOYED_API_URL = "https://cinematch-0lck.onrender.com";
@@ -327,6 +353,8 @@ let indicePeliculaActual = 0;
 
 // Paso 5 - renderizar peliculas (Mockup)
 function renderMovies(movies) {
+  currentMovies = movies;
+
   if (!movies || movies.length === 0) {
     stepContainer.innerHTML = `
       <div class="error-card">
@@ -385,6 +413,9 @@ function renderMovies(movies) {
               <p class="movie-overview">
                 ${movie.overview || "Sin descripción disponible."}
               </p>
+
+              <button class="watchlist-save-button" type="button" data-save-movie-id="${movie.id}"> + Guardar en Watchlist </button>
+
             </div>
           </article>
         `;
@@ -397,14 +428,71 @@ function renderMovies(movies) {
       </button>
     </div>
   `;
+
+  //detectar click en el boton guardar en watchlist
+  document.querySelectorAll(".watchlist-save-button").forEach(button => {
+    button.addEventListener("click", () => {
+      const movieId = Number(button.dataset.saveMovieId);
+      saveRecommendedMovieToWatchlist(movieId);
+    });
+  });
 }
 
-// Función para pasar a la siguiente película de la base de datos simulada
-window.mostrarSiguientePelicula = function () {
-  indicePeliculaActual = (indicePeliculaActual + 1) % peliculasMock.length;
-  console.log("Cambiando a la película index " + indicePeliculaActual + ": " + peliculasMock[indicePeliculaActual].titulo);
-  renderSummaryStep();
-};
+// funcion para guardar una recomendacion en la watchlist
+async function saveRecommendedMovieToWatchlist(movieId) {
+  const user = getLoggedUser();
+
+  if (!user) {
+    alert("Para guardar películas necesitás iniciar sesión.");
+    window.location.href = "./pages/login.html";
+    return;
+  }
+
+  const movie = currentMovies.find(item => item.id === movieId);
+
+  if (!movie) {
+    alert("No se encontró la película seleccionada.");
+    return;
+  }
+
+  const body = {
+    userId: user.userId,
+    tmdbId: movie.id,
+    title: movie.title,
+    mediaType: "movie",
+    posterPath: movie.poster_path,
+    releaseYear: getMovieReleaseYear(movie),
+    rating: movie.vote_average,
+    genres: getMovieGenres(movie)
+  };
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/watchlist`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "No se pudo guardar en la Watchlist");
+    }
+
+    const button = document.querySelector(`[data-save-movie-id="${movieId}"]`);
+
+    if (button) {
+      button.textContent = "Guardada";
+      button.disabled = true;
+      button.classList.add("saved");
+    }
+
+  } catch (error) {
+    alert(error.message);
+  }
+}
 
 // restablecer las preguntas por default
 function restartSteps() {
@@ -661,10 +749,27 @@ if (registerForm) {
     }
   });
 }
+//--------------------------------funciones globales---------------------------------
 
 //verificar si hay usuario logueado
 function getLoggedUser() {
   return JSON.parse(localStorage.getItem("cinematchUser"));
+}
+
+function getMovieReleaseYear(movie) {
+  if (!movie.release_date) return null;
+  return Number(movie.release_date.slice(0, 4));
+}
+
+function getMovieGenres(movie) {
+  if (!movie.genre_ids || !Array.isArray(movie.genre_ids)) {
+    return "";
+  }
+
+  return movie.genre_ids
+    .map(id => genreIdToName[id])
+    .filter(Boolean)
+    .join(", ");
 }
 
 //cerrar sesion
